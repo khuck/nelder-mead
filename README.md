@@ -12,7 +12,7 @@ EXPANSION, and CONTRACTION as necessary.
 
 I am grateful to the article ["Breaking down the Nelder Mead
 algorithm"](https://brandewinder.com/2022/03/31/breaking-down-Nelder-Mead/) for
-a great explanation of the algorithm and how best to understand it.
+a great explanation of the algorithm with helpful diagrams.
 
 The original is a simple C++ implementation of Nelder Mead, a numerical method
 to find the minimum or maximum of an objective function in a multidimensional
