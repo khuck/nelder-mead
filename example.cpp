@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+#include <array>
 
 #include "nelder-mead-old.h"
 
