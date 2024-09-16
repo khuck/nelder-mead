@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "nelder-mead.h"
+#include "nelder-mead-mine.h"
 
 // The rosenbrock function
 // https://en.wikipedia.org/wiki/Rosenbrock_function
@@ -18,14 +18,23 @@ T rosen(const std::vector<T> &m) {
 
 int main() {
     try {
+
         auto starting_point   = std::vector<double>{1, 2, 3, 4, 5};
-        auto starting_simplex = std::vector<std::vector<double>>{
-            {2, 3, 4, 5, 1}, {3, 4, 5, 1, 2}, {4, 5, 1, 2, 3},
-            {5, 1, 2, 3, 4}, {1, 2, 3, 4, 5}, {0, 0, 0, 0, 0}};
-        auto res = nelder_mead::find_min(rosen<double>, starting_point, true,
-                                         starting_simplex);
+        auto searcher = nelder_mead_mine::Searcher<double>(
+            starting_point);
+        double sum;
+        // check for convergence
+        while(!searcher.converged()) {
+            // request a point
+            auto point = searcher.get_next_point();
+            // run the function
+            sum = rosen(point);
+            // report the result
+            searcher.report(sum);
+        }
         std::cout << "Rosen solution: ";
-        for (auto i : res)
+        auto point = searcher.get_res();
+        for (auto i : point)
             std::cout << i << " ";
         std::cout << std::endl;
     } catch (std::exception &e) { std::cout << e.what() << std::endl; }

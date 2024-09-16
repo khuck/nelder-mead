@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "nelder-mead.h"
+#include "nelder-mead-mine.h"
 
 template <typename T>
 T beale(const std::vector<T> &m) {
@@ -19,12 +19,26 @@ T beale(const std::vector<T> &m) {
 }
 
 int main() {
-    constexpr double tol = 1.0e-6;
     try {
+        constexpr double tol = 1.0e-6;
         auto starting_point   = std::vector<double>{0.0, 0.0};
-        auto sum = nelder_mead::find_min(beale<double>, starting_point, true, {}, {}, {}, tol, tol);
+        auto searcher = nelder_mead_mine::Searcher<double>(
+            starting_point);
+        searcher.function_tolerance(tol);
+        searcher.point_tolerance(tol);
+        double sum;
+        // check for convergence
+        while(!searcher.converged()) {
+            // request a point
+            auto point = searcher.get_next_point();
+            // run the function
+            sum = beale(point);
+            // report the result
+            searcher.report(sum);
+        }
         std::cout << "Beale solution: ";
-        for (auto i : sum)
+        auto point = searcher.get_res();
+        for (auto i : point)
             std::cout << i << " ";
         std::cout << std::endl;
     } catch (std::exception &e) { std::cout << e.what() << std::endl; }

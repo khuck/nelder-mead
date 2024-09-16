@@ -23,17 +23,15 @@ int main() {
             starting_point, minimum_limit, maximum_limit);
         searcher.function_tolerance(tol);
         searcher.point_tolerance(tol);
-        bool converged{false};
         double sum;
-        while(!converged) {
+        // check for convergence
+        while(!searcher.converged()) {
             // request a point
             auto point = searcher.get_next_point();
             // run the function
             sum = squared(point);
             // report the result
             searcher.report(sum);
-            // check for convergence
-            converged = searcher.converged();
         }
         std::cout << "Squared solution: ";
         auto point = searcher.get_res();
