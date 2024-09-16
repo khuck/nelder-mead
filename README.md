@@ -79,7 +79,7 @@ Converged after 59 iterations.
 Total func evaluations: 118
 Cosine solution: 3.14159
 ```
-C++11 is required. See [`example.cpp`](example.cpp) for examples using the old implementation, and the following test programs to see the new implementation:
+See [`example.cpp`](example.cpp) for examples using the old implementation, and the following test programs to see the new implementation:
 * [`beale.cpp`](beale.cpp)
 * [`booth.cpp`](booth.cpp)
 * [`cosine.cpp`](cosine.cpp)
