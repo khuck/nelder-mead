@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "nelder-mead-mine.h"
+#include "nelder-mead.h"
 
 template <typename T>
 T distance(const std::vector<T> &m) {

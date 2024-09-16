@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include "nelder-mead.h"
+#include "nelder-mead-old.h"
 
 // The rosenbrock function
 // https://en.wikipedia.org/wiki/Rosenbrock_function
