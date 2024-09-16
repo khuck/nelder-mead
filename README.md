@@ -5,7 +5,7 @@ method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method) was inspired
 by the implementaiton at https://github.com/YibaiMeng/nelder-mead, however has
 been modified for use as a two-step search strategy. The modification allows us
 to request a new point in the simplex, use those settings elsewhere in a
-program, and then report the resulting output. This removes the main "while"
+program, and then report the resulting output. This removes the main `while`
 loop in the previous implementation, and replaces it with a simple state
 machine that allows us to iterate through the stages of SIMPLEX, REFLECTION,
 EXPANSION, and CONTRACTION as necessary.
@@ -16,7 +16,7 @@ a great explanation of the algorithm with helpful diagrams.
 
 The original is a simple C++ implementation of Nelder Mead, a numerical method
 to find the minimum or maximum of an objective function in a multidimensional
-space. This implementation uses the Nelder Mead method in [Implementing the
+space. That implementation uses the Nelder Mead method in [Implementing the
 Nelder-Mead simplex algorithm with adaptive
 parameters](https://link.springer.com/article/10.1007/s10589-010-9329-3) by Gao
 and Han, which makes a modification to improve convergence in higher
@@ -24,9 +24,9 @@ dimensions. The original implementation has been retained in nelder-mead-old.h
 as a reference.
 
 This is a header only library. To use this library, simply include the
-`nelder_mead.h` file in your program. The library defines two classes, Var and
-Searcher, and the Searcher class has four main methods: a constructor,
-`get_new_point`, `report`, and `converged`.
+`nelder_mead.h` file in your program. The library defines one public class,
+`Searcher`, with four main methods: a constructor, `get_new_point`, `report`,
+and `converged`.
 
 ```cpp
 #include <cmath>
