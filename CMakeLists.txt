@@ -24,9 +24,9 @@ foreach(example_program ${example_programs})
 
 target_compile_options(${example_program} PUBLIC
     -Wall -Wextra
-    $<$<CONFIG:Release>:-O3>
-    $<$<CONFIG:Debug>:-g3 -O0 -fno-inline>
-    $<$<CONFIG:Profile>:-O3 -pg>
+    $<$<CONFIG:Release>:-O3 -Wall -Werror>
+    $<$<CONFIG:Debug>:-g3 -O0 -fno-inline -Wall -Werror>
+    $<$<CONFIG:Profile>:-O3 -pg -Wall -Werror>
     )
 set_property(TARGET ${example_program} PROPERTY CXX_STANDARD 17)
 set_property(TARGET ${example_program} PROPERTY CXX_EXTENSIONS OFF)
