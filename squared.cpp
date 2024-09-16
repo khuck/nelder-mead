@@ -19,7 +19,7 @@ int main() {
         auto starting_point   = std::vector<double>{1.0};
         auto minimum_limit   = std::vector<double>{-2.0};
         auto maximum_limit   = std::vector<double>{2.0};
-        auto searcher = nelder_mead_mine::Searcher<double>(
+        auto searcher = nelder_mead::Searcher<double>(
             starting_point, minimum_limit, maximum_limit);
         searcher.function_tolerance(tol);
         searcher.point_tolerance(tol);

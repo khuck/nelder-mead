@@ -16,7 +16,7 @@ int main() {
         auto starting_point   = std::vector<double>{0.0};
 
 
-        auto searcher = nelder_mead_mine::Searcher(
+        auto searcher = nelder_mead::Searcher(
             starting_point, {}, {}, true);
         //searcher.verbose = true;
         searcher.function_tolerance(tol);

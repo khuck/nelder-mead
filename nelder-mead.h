@@ -1,5 +1,4 @@
-#ifndef NELDER_MEAD_CPP_H
-#define NELDER_MEAD_CPP_H
+#pragma once
 
 #include <cassert>
 #include <cmath>
@@ -7,7 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace nelder_mead_mine {
+namespace nelder_mead {
 
 template <typename T> class Vec {
   public:
@@ -538,5 +537,4 @@ template <typename T = double> class Searcher {
     }
 };
 
-}; // namespace nelder_mead_mine
-#endif
+}; // namespace nelder_mead

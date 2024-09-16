@@ -22,7 +22,7 @@ int main() {
     try {
         constexpr double tol = 1.0e-6;
         auto starting_point   = std::vector<double>{0.0, 0.0};
-        auto searcher = nelder_mead_mine::Searcher<double>(
+        auto searcher = nelder_mead::Searcher<double>(
             starting_point);
         searcher.function_tolerance(tol);
         searcher.point_tolerance(tol);

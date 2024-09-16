@@ -20,7 +20,7 @@ int main() {
     try {
 
         auto starting_point   = std::vector<double>{1, 2, 3, 4, 5};
-        auto searcher = nelder_mead_mine::Searcher<double>(
+        auto searcher = nelder_mead::Searcher<double>(
             starting_point);
         double sum;
         // check for convergence

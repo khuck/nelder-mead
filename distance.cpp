@@ -21,7 +21,7 @@ int main() {
         auto minimum_limit   = std::vector<double>{0,0,0,0,0,0,0};
         auto maximum_limit   = std::vector<double>{7,7,7,7,7,7,7};
         std::array<double,2> tol{0.1,0.01};
-        auto searcher = nelder_mead_mine::Searcher<double>(
+        auto searcher = nelder_mead::Searcher<double>(
             starting_point, minimum_limit, maximum_limit, false);
             //starting_point);
         searcher.function_tolerance(tol[0]);
