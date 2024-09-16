@@ -2,27 +2,39 @@ cmake_minimum_required(VERSION 3.5)
 
 project(nelder-mead-test LANGUAGES CXX)
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
+#set(CMAKE_VERBOSE_MAKEFILE ON)
 
-file(GLOB SOURCES
-    ${CMAKE_SOURCE_DIR}/*.h 
-    ${CMAKE_SOURCE_DIR}/*.cpp
+set(example_programs
+    beale
+    booth
+    cosine
+    distance
+    example
+    rosenbrock
+    squared
     )
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+file(GLOB HEADERS
+    ${CMAKE_SOURCE_DIR}/*.h
+    )
 
-target_compile_options(${PROJECT_NAME} PUBLIC 
+foreach(example_program ${example_programs})
+    set(source ${example_program}.cpp)
+    add_executable(${example_program} ${source} ${HEADERS})
+
+target_compile_options(${example_program} PUBLIC
     -Wall -Wextra
     $<$<CONFIG:Release>:-O3>
     $<$<CONFIG:Debug>:-g3 -O0 -fno-inline>
     $<$<CONFIG:Profile>:-O3 -pg>
     )
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_EXTENSIONS OFF)
-set_property(TARGET ${PROJECT_NAME} PROPERTY RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+set_property(TARGET ${example_program} PROPERTY CXX_STANDARD 17)
+set_property(TARGET ${example_program} PROPERTY CXX_EXTENSIONS OFF)
+set_property(TARGET ${example_program} PROPERTY RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
-target_include_directories(${PROJECT_NAME} PUBLIC
+target_include_directories(${example_program} PUBLIC
     ${CMAKE_SOURCE_DIR}
     )
 
-target_link_libraries(${PROJECT_NAME})
+target_link_libraries(${example_program})
+endforeach()
